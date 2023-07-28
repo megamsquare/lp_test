@@ -1,6 +1,3 @@
-# Title: Mid-Level Node Backend Developer Technical Assessment
-This project is to create APIs that involves the user register and login in order to create/update/delete a blog, while having an API that is open to all which will get all blogs or get the blog by the blog ID.
-
 ### Setup and installation
 Make sure you have your docker running, because this api runs on Docker for database and environment control.
 
