@@ -26,6 +26,9 @@ Create a user
 
 Example of Request body:
 {
+    "firstName": "User",
+    "lastName": "Testing",
+    "email": "example@email.com"
     "username": "user",
     "password": "user"
 }
@@ -55,37 +58,38 @@ Response
 Status Code: 201 (CREATED)
 Response Body: This will return an accessToken which user will use to access create/update/delete of post.
 
-### POST /api/v1/blog
+### POST /api/v1/user/updateUser/:id
 
-User creates Blog
+Update User information
 
 #### Request
 
 - Method: POST
-- Path: /api/v1/blog
-- Request Body: The login user with token can created a blog by passing authorization to header
+- Path: /api/v1/user/updateUser/:id
+- Request Body: The login user with token can update his/her informtion by passing authorization to headern and the request body
 
 Example of Request body:
 {
-  "title": "Blog title",
-  "content": "Blog content",
-  "author": "UserId of the creator"
+    "firstName": "User",
+    "lastName": "Testing",
+    "email": "example@email.com"
+    "username": "user"
 }
 
 Response
 
-Status Code: 201 (CREATED)
-Response Body: This will return the information of the created blog.
+Status Code: 200 (OK)
+Response Body: This will return the information of the updated user.
 
-### GET /api/v1/blog
+### GET /api/v1/user/getAll
 
-Blog list request
+Users list request
 
 #### Request
 
 - Method: GET
-- Path: /api/v1/blog
-- Request Body: No request for this endpoint
+- Path: /api/v1/user
+- Request Body: The login admin with token can request for list of user informtion by passing authorization to headern
 
 Example of Request body:
 None
@@ -93,17 +97,17 @@ None
 Response
 
 Status Code: 200 (OK)
-Response Body: This will return the list of blogs in the system.
+Response Body: This will return the list of users in the system.
 
-### GET /api/v1/blog/:id
+### GET /api/v1/user/getById/:id
 
-Get Blog by blog id
+Get User by blog id
 
 #### Request
 
-- Method: POST
-- Path: /api/v1/blog/:id
-- Request Body: This gets the blog id in the parameter
+- Method: GET
+- Path: /api/v1/user/getById/:id
+- Request Body: This gets the user id in the parameter
 
 Example of Request body:
 NONE
@@ -111,30 +115,12 @@ NONE
 Response
 
 Status Code: 200 (OK)
-Response Body: This will return blog information that belong to the id passed in the parameter.
+Response Body: This will return user information that belong to the user id passed in the parameter.
 
 ### PUT /api/v1/blog/:id
 
 Login user Updates Blog by blog id
 
-#### Request
-
-- Method: PUT
-- Path: /api/v1/blog/:id
-- Request Body: This update the blog by passing blog id in the parameter, and can only be done when a user has accessToken, The user must also be the author of the blog before updating.
-
-Example of Request body:
-{
-  "title": "Blog title",
-  "content": "Blog content"
-}
-
-Response
-
-Status Code: 200 (OK)
-Response Body: This will returns the updated blog information that belong to the id passed in the parameter.
-
-#### Request
 
 - Method: POST
 - Path: /api/v1/blog/:id
@@ -147,24 +133,6 @@ Response
 
 Status Code: 200 (OK)
 Response Body: This will return blog information that belong to the id passed in the parameter.
-
-### DELETE /api/v1/blog/:id
-
-Login user Updates Blog by blog id
-
-#### Request
-
-- Method: DELETE
-- Path: /api/v1/blog/:id
-- Request Body: This delete the blog by passing blog id in the parameter, and can only be done when a user that has accessToken, The user must also be the author of the blog before deleting.
-
-Example of Request body:
-None
-
-Response
-
-Status Code: 200 (OK)
-Response Body: This will returns the deleted blog information that belong to the id passed in the parameter.
 
 ### Testing
 To test, you need to run the below syntax in your terminal:
@@ -172,9 +140,6 @@ To test, you need to run the below syntax in your terminal:
 ```bash
 npm test
 ```
-
-### Swagger documentation
-You can visit the api documentation when you run the server at `http://localhost:3001/api-docs`
 
 ### Technologies Used
 - Node.js
@@ -185,6 +150,7 @@ You can visit the api documentation when you run the server at `http://localhost
 - Http-status
 - Typescript
 - Jest
+- Cors
 - Supertest
 - Ts-node
 - Swagger
